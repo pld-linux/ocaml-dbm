@@ -15,7 +15,7 @@ Source0:	https://forge.ocamlcore.org/frs/download.php/728/camldbm-%{version}.tgz
 Patch0:		%{name}-destdir.patch
 URL:		https://forge.ocamlcore.org/projects/camldbm/
 BuildRequires:	db-devel
-BuildRequires:	ocaml >= 3.12
+BuildRequires:	ocaml >= 1:4
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,6 +33,7 @@ Summary(pl.UTF-8):	Wiązania DBM dla OCamla - cześć programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
+Conflicts:	ocaml-findlib < 1.5.5
 
 %description devel
 This package contains files needed to develop OCaml programs using
