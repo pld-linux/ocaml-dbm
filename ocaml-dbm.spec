@@ -2,6 +2,10 @@
 # Conditional build:
 %bcond_without	opt		# build opt
 
+%ifarch x32
+%undefine	with_opt
+%endif
+
 %define		module	dbm
 Summary:	DBM binding for OCaml
 Summary(pl.UTF-8):	Wiązania DBM dla OCamla
