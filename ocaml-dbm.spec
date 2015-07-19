@@ -1,9 +1,9 @@
 #
 # Conditional build:
-%bcond_without	opt		# build opt
+%bcond_without	ocaml_opt	# skip building native optimized binaries (bytecode is always built)
 
-%ifarch x32
-%undefine	with_opt
+%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9
+%undefine	with_ocaml_opt
 %endif
 
 %define		module	dbm
@@ -11,7 +11,7 @@ Summary:	DBM binding for OCaml
 Summary(pl.UTF-8):	Wiązania DBM dla OCamla
 Name:		ocaml-dbm
 Version:	1.0
-Release:	1
+Release:	2
 License:	LGPL v2 with linking exception
 Group:		Libraries
 Source0:	https://forge.ocamlcore.org/frs/download.php/728/camldbm-%{version}.tgz
@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/dbm.cma
 %{_libdir}/ocaml/dbm.cmi
 %{_libdir}/ocaml/dbm.mli
-%if %{with opt}
+%if %{with ocaml_opt}
 %{_libdir}/ocaml/dbm.a
 %{_libdir}/ocaml/dbm.cmxa
 %{_libdir}/ocaml/dbm.cmxs
