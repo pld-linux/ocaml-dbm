@@ -17,6 +17,7 @@ Group:		Libraries
 Source0:	https://forge.ocamlcore.org/frs/download.php/728/camldbm-%{version}.tgz
 # Source0-md5:	79a297c0e0c54fbb3c7e795359e5f902
 Patch0:		%{name}-destdir.patch
+Patch1:		%{name}-no-ocamlopt.patch
 URL:		https://forge.ocamlcore.org/projects/camldbm/
 BuildRequires:	db-devel
 BuildRequires:	ocaml >= 1:4
@@ -50,6 +51,7 @@ DBM biblioteki.
 %prep
 %setup -q -n camldbm-%{version}
 %patch0 -p1
+%{!?with_ocaml_opt:%patch1 -p1}
 
 %build
 # instead of unpredictable configure
