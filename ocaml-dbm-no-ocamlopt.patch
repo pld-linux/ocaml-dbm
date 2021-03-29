@@ -1,6 +1,7 @@
---- camldbm-1.0/Makefile.orig	2015-07-19 09:03:19.668090539 +0200
-+++ camldbm-1.0/Makefile	2015-07-19 09:13:42.181398010 +0200
-@@ -25,7 +25,7 @@
+diff -urNp -x '*.orig' dbm-camldbm-1.2.org/Makefile dbm-camldbm-1.2/Makefile
+--- dbm-camldbm-1.2.org/Makefile	2021-03-29 22:34:21.222435473 +0200
++++ dbm-camldbm-1.2/Makefile	2021-03-29 22:34:21.245768696 +0200
+@@ -25,7 +25,7 @@ LIBDIR=`ocamlc -where`
  STUBLIBDIR=$(LIBDIR)/stublibs
  
  
@@ -9,8 +10,8 @@
  
  dbm.cma: dbm.cmo
  	$(OCAMLMKLIB) -o dbm -oc camldbm -linkall dbm.cmo $(DBM_LINK)
-@@ -60,9 +60,7 @@
- 	if test -f dllcamldbm.$(SO); then cp dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
+@@ -60,9 +60,7 @@ install::
+ 	if test -f dllcamldbm.$(SO); then mkdir $(DESTDIR)$(STUBLIBDIR) || echo Ok; cp dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
  	cp libcamldbm.$(A) $(DESTDIR)$(LIBDIR)/
  	cd $(DESTDIR)$(LIBDIR) && ranlib libcamldbm.$(A)
 -	cp dbm.cma dbm.cmxa dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
