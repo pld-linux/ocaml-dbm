@@ -11,7 +11,7 @@ Summary:	DBM binding for OCaml
 Summary(pl.UTF-8):	Wiązania DBM dla OCamla
 Name:		ocaml-dbm
 Version:	1.2
-Release:	1
+Release:	2
 License:	LGPL v2 with linking exception
 Group:		Libraries
 Source0:	https://github.com/ocaml/dbm/archive/camldbm-%{version}/camldbm-%{version}.tar.gz
