@@ -34,7 +34,7 @@ Ta biblioteka OCamla to wiązania do uniksowych "baz danych" NDBM/GDBM.
 
 %package devel
 Summary:	DBM binding for OCaml - development part
-Summary(pl.UTF-8):	Wiązania DBM dla OCamla - cześć programistyczna
+Summary(pl.UTF-8):	Wiązania DBM dla OCamla - część programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
