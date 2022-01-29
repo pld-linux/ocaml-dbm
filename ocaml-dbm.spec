@@ -1,12 +1,11 @@
 #
 # Conditional build:
-%bcond_without	ocaml_opt	# skip building native optimized binaries (bytecode is always built)
+%bcond_without	ocaml_opt	# native optimized binaries (bytecode is always built)
 
-%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 ppc sparc sparcv9
 %undefine	with_ocaml_opt
 %endif
 
-%define		module	dbm
 Summary:	DBM binding for OCaml
 Summary(pl.UTF-8):	Wiązania DBM dla OCamla
 Name:		ocaml-dbm
@@ -46,7 +45,7 @@ DBM library.
 
 %description devel -l pl.UTF-8
 Pakiet ten zawiera pliki niezbędne do tworzenia programów używających
-DBM biblioteki.
+biblioteki DBM.
 
 %prep
 %setup -q -n dbm-camldbm-%{version}
@@ -71,7 +70,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{dbm,stublibs}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp META $RPM_BUILD_ROOT%{_libdir}/ocaml/dbm
+cp -p META $RPM_BUILD_ROOT%{_libdir}/ocaml/dbm
 cat >>$RPM_BUILD_ROOT%{_libdir}/ocaml/dbm/META <<EOF 
 directory="^"
 EOF
