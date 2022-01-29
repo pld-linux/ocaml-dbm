@@ -1,23 +1,23 @@
---- camldbm-1.0/Makefile.orig	2011-11-22 16:56:49.000000000 +0100
-+++ camldbm-1.0/Makefile	2014-11-06 21:00:16.398248365 +0100
-@@ -57,13 +57,13 @@
+--- dbm-camldbm-1.3/Makefile.orig	2022-01-29 16:02:30.175985113 +0100
++++ dbm-camldbm-1.3/Makefile	2022-01-29 16:06:16.238093763 +0100
+@@ -57,13 +57,13 @@ depend:
  	$(OCAMLDEP) *.ml *.mli > .depend
  
  install::
 -	if test -f dllcamldbm.$(SO); then mkdir $(STUBLIBDIR) || echo Ok; cp dllcamldbm.$(SO) $(STUBLIBDIR)/; fi 
 -	cp libcamldbm.$(A) $(LIBDIR)/
 -	cd $(LIBDIR) && ranlib libcamldbm.$(A)
--	cp dbm.cma dbm.cmxa dbm.cmi dbm.mli $(LIBDIR)/
+-	cp dbm.cmx dbm.cma dbm.cmxa dbm.cmi dbm.mli $(LIBDIR)/
 -	cp dbm.$(A) $(LIBDIR)/
 -	cd $(LIBDIR) && ranlib dbm.$(A)
 -	if test -f dbm.cmxs; then cp dbm.cmxs $(LIBDIR)/; fi
-+	if test -f dllcamldbm.$(SO); then mkdir $(DESTDIR)$(STUBLIBDIR) || echo Ok; cp dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
-+	cp libcamldbm.$(A) $(DESTDIR)$(LIBDIR)/
++	if test -f dllcamldbm.$(SO); then mkdir $(DESTDIR)$(STUBLIBDIR) || echo Ok; cp -p dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
++	cp -p libcamldbm.$(A) $(DESTDIR)$(LIBDIR)/
 +	cd $(DESTDIR)$(LIBDIR) && ranlib libcamldbm.$(A)
-+	cp dbm.cma dbm.cmxa dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
-+	cp dbm.$(A) $(DESTDIR)$(LIBDIR)/
++	cp -p dbm.cmx dbm.cma dbm.cmxa dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
++	cp -p dbm.$(A) $(DESTDIR)$(LIBDIR)/
 +	cd $(DESTDIR)$(LIBDIR) && ranlib dbm.$(A)
-+	if test -f dbm.cmxs; then cp dbm.cmxs $(DESTDIR)$(LIBDIR)/; fi
++	if test -f dbm.cmxs; then cp -p dbm.cmxs $(DESTDIR)$(LIBDIR)/; fi
  
  clean::
  	rm -f *.cm* *.$(O) *.$(A) *.$(SO)
