@@ -1,6 +1,5 @@
-diff -urNp -x '*.orig' dbm-camldbm-1.2.org/Makefile dbm-camldbm-1.2/Makefile
---- dbm-camldbm-1.2.org/Makefile	2021-03-29 22:34:21.222435473 +0200
-+++ dbm-camldbm-1.2/Makefile	2021-03-29 22:34:21.245768696 +0200
+--- dbm-camldbm-1.3/Makefile.orig	2022-01-29 17:11:56.110082978 +0100
++++ dbm-camldbm-1.3/Makefile	2022-01-29 17:13:22.106283764 +0100
 @@ -25,7 +25,7 @@ LIBDIR=`ocamlc -where`
  STUBLIBDIR=$(LIBDIR)/stublibs
  
@@ -11,13 +10,13 @@ diff -urNp -x '*.orig' dbm-camldbm-1.2.org/Makefile dbm-camldbm-1.2/Makefile
  dbm.cma: dbm.cmo
  	$(OCAMLMKLIB) -o dbm -oc camldbm -linkall dbm.cmo $(DBM_LINK)
 @@ -60,9 +60,7 @@ install::
- 	if test -f dllcamldbm.$(SO); then mkdir $(DESTDIR)$(STUBLIBDIR) || echo Ok; cp dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
- 	cp libcamldbm.$(A) $(DESTDIR)$(LIBDIR)/
+ 	if test -f dllcamldbm.$(SO); then mkdir $(DESTDIR)$(STUBLIBDIR) || echo Ok; cp -p dllcamldbm.$(SO) $(DESTDIR)$(STUBLIBDIR)/; fi 
+ 	cp -p libcamldbm.$(A) $(DESTDIR)$(LIBDIR)/
  	cd $(DESTDIR)$(LIBDIR) && ranlib libcamldbm.$(A)
--	cp dbm.cma dbm.cmxa dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
--	cp dbm.$(A) $(DESTDIR)$(LIBDIR)/
+-	cp -p dbm.cmx dbm.cma dbm.cmxa dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
+-	cp -p dbm.$(A) $(DESTDIR)$(LIBDIR)/
 -	cd $(DESTDIR)$(LIBDIR) && ranlib dbm.$(A)
-+	cp dbm.cma dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
- 	if test -f dbm.cmxs; then cp dbm.cmxs $(DESTDIR)$(LIBDIR)/; fi
++	cp -p dbm.cma dbm.cmi dbm.mli $(DESTDIR)$(LIBDIR)/
+ 	if test -f dbm.cmxs; then cp -p dbm.cmxs $(DESTDIR)$(LIBDIR)/; fi
  
  clean::
