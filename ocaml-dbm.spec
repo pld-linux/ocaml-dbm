@@ -51,7 +51,7 @@ biblioteki DBM.
 %prep
 %setup -q -n dbm-camldbm-%{version}
 %patch -P0 -p1
-%{!?with_ocaml_opt:%patch1 -p1}
+%{!?with_ocaml_opt:%patch -P1 -p1}
 
 %build
 # instead of unpredictable configure
